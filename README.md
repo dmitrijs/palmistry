@@ -19,9 +19,10 @@ The codes are written based on Python 3.7.6. These are the requirements for runn
 
 In order to install the requirements, run:
 ```bash
-python3 -m venv venv
+python3.11 -m venv venv
 venv/bin/pip install -r ./code/requirements.txt
 ```
+NOTE: Only Python 3.8 - 3.11 is supported.
 
 ## Run
 1. Before running the codes, **a palm image for input(.heic or .jpg)** should be prepared in the `./code/inputs` directory. We provided four sample inputs.
