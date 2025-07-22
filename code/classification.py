@@ -356,12 +356,29 @@ def classify(path_to_palmline_image):
     kernel = np.ones((3, 3), np.uint8)
     # dilated = cv2.dilate(palmline_img, kernel, iterations=3)
     # eroded = cv2.erode(dilated, kernel, iterations=3)
-    skel_img = cv2.cvtColor(skeletonize(palmline_img), cv2.COLOR_BGR2GRAY)
-    
-    #cv2.imwrite('results/skel.jpg',skel_img)
-    
-    lines = group(skel_img)  # get candidate lines
+
+    if False:
+        skel_img = cv2.cvtColor(skeletonize(palmline_img), cv2.COLOR_BGR2GRAY)
+
+        #cv2.imwrite('results/skel.jpg',skel_img)
+
+        lines = group(skel_img)  # get candidate lines
+    else:
+        # skel_img_prepare = skeletonize(palmline_img)
+        skel_img = cv2.cvtColor(palmline_img, cv2.COLOR_BGR2GRAY)
+        skel_img_gray = skeletonize(skel_img)
+        # skel_img = cv2.cvtColor(skel_img_gray, cv2.COLOR_GRAY2BGR)
+        skeleton_uint8 = (skel_img_gray * 255).astype(np.uint8)
+        # skeleton_bgr = cv2.cvtColor(skeleton_uint8, cv2.COLOR_GRAY2BGR)
+        lines = group(skeleton_uint8)  # get candidate lines
+
     lines = classify_lines(centers, lines, palmline_img.shape[0], palmline_img.shape[1])  # choose 3 lines from candidates
     # colored_img = color(skel_img, classified_lines) # color 3 lines (RGB)
+
+    # np.savetxt('output.txt', lines, fmt='%d')
+
+    with open("warped_palm_lines.txt", "w") as f:
+        for item in lines:
+            f.write(str(item) + "\n")
 
     return lines
