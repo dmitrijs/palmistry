@@ -19,18 +19,19 @@ The codes are written based on Python 3.7.6. These are the requirements for runn
 
 In order to install the requirements, run:
 ```bash
-> python3 -m venv venv
-> venv/bin/pip install -r ./code/requirements.txt
+python3 -m venv venv
+venv/bin/pip install -r ./code/requirements.txt
 ```
 
 ## Run
 1. Before running the codes, **a palm image for input(.heic or .jpg)** should be prepared in the `./code/inputs` directory. We provided four sample inputs.
 2. Run `read_palm.py` by the command below. After running the code, result files will be saved in the `./code/results` directory.
 ```bash
-> venv/bin/python ./code/read_palm.py --input hand1.jpg
-> venv/bin/python ./code/read_palm.py --input hand6.jpg
-> venv/bin/python ./code/read_palm.py --input hand48.jpg
-> venv/bin/python ./code/read_palm.py --input hand70.jpg
+cd code
+../venv/bin/python ./read_palm.py --input hand1.jpg
+../venv/bin/python ./read_palm.py --input hand6.jpg
+../venv/bin/python ./read_palm.py --input hand48.jpg
+../venv/bin/python ./read_palm.py --input hand70.jpg
 ```
 
 ## Results
