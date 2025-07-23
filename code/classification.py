@@ -377,7 +377,7 @@ def classify(path_to_palmline_image):
 
     # np.savetxt('output.txt', lines, fmt='%d')
 
-    with open("warped_palm_lines.txt", "w") as f:
+    with open("results/warped_palm_lines.txt", "w") as f:
         for item in lines:
             f.write(str(item) + "\n")
 
